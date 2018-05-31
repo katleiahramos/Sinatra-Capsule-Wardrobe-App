@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :sessions_secret, "secret"
+    set :session_secret, "secret"
   end
 
   get "/" do
@@ -20,7 +20,6 @@ class ApplicationController < Sinatra::Base
   post '/login' do
     user = User.find_by(username: params[:username])
     if user.authenticate(params[:password])
-      binding.pry
       session[:user_id] = user.id
       redirect "users/#{user.id}"
     else
@@ -30,18 +29,19 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/:id' do
-    @user = User.find(params[:id])
+    @user = current_user
     erb :'users/show'
   end
 
 
   get '/pieces/new' do
+    @user = current_user
     erb :'pieces/create_piece'
   end
 
   post '/pieces' do
-
-    #create piece and associate it with a category
+    piece = Piece.create(params)
+    redirect "users/#{current_user.id}"
   end
 
   helpers do
