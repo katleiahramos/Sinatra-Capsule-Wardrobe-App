@@ -23,7 +23,7 @@ Confirm
 To Do
 
 
-[] signup page: persists user into database
+[x] signup page: persists user into database
 [] view clothes by categories
 [] can view a single page for a piece of clothing
 

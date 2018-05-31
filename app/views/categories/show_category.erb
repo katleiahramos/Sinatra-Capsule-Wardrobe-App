@@ -1,0 +1,6 @@
+<%= @category.name  %>
+
+<% @category.pieces.each do |piece| %>
+  <a href="/pieces/<%= piece.id %> "><%= piece.description %></a>
+
+<% end %>

@@ -1,6 +1,14 @@
 <h1>Welcome <%= @user.username %> !</h1>
 <br><br>
 
+
+<!-- categories -->
+<% @user.categories.each do |category| %>
+<a href="/categories/<%= category.id %>"><%= category.name %></a>
+<% end %>
+
+<!-- pieces -->
+
 <% @user.pieces.each do |piece| %>
   <h2> <%= piece.description %>  </h2>
   <h3> <%= piece.price %>  </h2>

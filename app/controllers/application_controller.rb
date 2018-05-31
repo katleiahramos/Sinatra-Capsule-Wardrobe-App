@@ -92,6 +92,21 @@ class ApplicationController < Sinatra::Base
     redirect '/login'
   end
 
+# categories views
+  get '/categories/:id' do
+    @category = Category.find(params[:id])
+    erb :'categories/show_category'
+  end
+
+
+  # pieces views
+
+
+  get '/pieces/:id' do
+    @piece = Piece.find(params[:id])
+    erb :'pieces/show_piece'
+  end
+
 
   helpers do
     def logged_in?
