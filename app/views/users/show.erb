@@ -9,6 +9,13 @@
 
 
   <a href="/pieces/<%= piece.id %>/edit">EDIT</a>
+
+  <form class="" action="/pieces/<%= piece.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE">
+  </form>
+
+
   <!-- <form action="/pieces/<%= piece.id %>/edit" method="post">
     <input type="submit" value="EDIT">
   </form> -->

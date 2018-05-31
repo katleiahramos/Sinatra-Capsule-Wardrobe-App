@@ -52,15 +52,20 @@ class ApplicationController < Sinatra::Base
   patch '/pieces/:id/edit' do
    piece = Piece.find(params[:id])
 
-   params.each do |key, value|
-      if !value.empty? && key != "_method"
-        piece.update(key => value)
+     params.each do |key, value|
+        if !value.empty? && key != "_method"
+          piece.update(key => value)
+        end
       end
-    end
 
     redirect "/users/#{current_user.id}"
   end
 
+
+  delete '/pieces/:id/delete' do
+    Piece.destroy(params[:id])
+    redirect "/users/#{current_user.id}"
+  end
 
 
 
