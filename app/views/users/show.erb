@@ -7,18 +7,15 @@
   <h3> <%= piece.size %>  </h2>
   <h3> <%= piece.category.name %>  </h2>
 
-
-  <a href="/pieces/<%= piece.id %>/edit">EDIT</a>
-
   <form class="" action="/pieces/<%= piece.id %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="DELETE">
   </form>
 
-
-  <!-- <form action="/pieces/<%= piece.id %>/edit" method="post">
+<br>
+  <form action="/pieces/<%= piece.id %>/edit" method="get">
     <input type="submit" value="EDIT">
-  </form> -->
+  </form>
     <br><br>
 <% end %>
 
@@ -34,3 +31,8 @@ Create a piece
  -->
 
  <a href="/pieces/new">Create A Piece!</a>
+
+
+ <form class="" action="/logout" method="post">
+   <input type="submit" value="Logout">
+ </form>

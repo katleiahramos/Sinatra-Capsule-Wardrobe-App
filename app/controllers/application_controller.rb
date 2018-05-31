@@ -46,7 +46,15 @@ class ApplicationController < Sinatra::Base
 
   get '/pieces/:id/edit' do
     @piece = Piece.find(params[:id])
-    erb :'pieces/edit_piece'
+
+    if logged_in? && @piece.user.id == current_user.id
+      erb :'pieces/edit_piece'
+    elsif logged_in?
+      redirect "/users/#{current_user.id}"
+    else
+      redirect '/'
+    end
+
   end
 
   patch '/pieces/:id/edit' do
@@ -67,6 +75,10 @@ class ApplicationController < Sinatra::Base
     redirect "/users/#{current_user.id}"
   end
 
+  post '/logout' do
+    session.destroy
+    redirect '/login'
+  end
 
 
   helpers do
