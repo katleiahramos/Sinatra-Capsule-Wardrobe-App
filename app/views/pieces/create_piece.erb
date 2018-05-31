@@ -1,5 +1,12 @@
 Create a piece!
 
 <form class="" action="/pieces" method="post">
-  <input type="piece" name="" value="">
+  <input type="text" name="description" value="Description">
+  <input type="text" name="price" value="Price">
+  <br><br>
+  <% Category.all.each do |category| %>
+  <input type="radio" name="category_id" value="<%= category.id %>"><%= category.name %></input>
+  <% end %>
+  <br><br>
+  <input type="submit" value="Create Piece">
 </form>

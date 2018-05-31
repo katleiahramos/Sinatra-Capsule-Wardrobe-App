@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531171427) do
+ActiveRecord::Schema.define(version: 20180531183600) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180531171427) do
 
   create_table "pieces", force: :cascade do |t|
     t.string  "size"
-    t.integer "price"
+    t.string  "price"
     t.string  "description"
     t.integer "user_id"
     t.integer "category_id"
