@@ -28,10 +28,22 @@ class ApplicationController < Sinatra::Base
 
   end
 
+
+  get '/signup' do
+    erb :'users/create'
+  end
+
+  post '/signup' do
+    user = User.create(params)
+    redirect "/login"
+  end
+
   get '/users/:id' do
     @user = current_user
     erb :'users/show'
   end
+
+
 
 
   get '/pieces/new' do

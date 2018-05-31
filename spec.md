@@ -7,8 +7,8 @@ Specs:
 - [x] Include at least one has_many relationship on your User model (x has_many y, e.g. User has_many Posts)
 - [x] Include at least one belongs_to relationship on another model (x belongs_to y, e.g. Post belongs_to User)
 - [x] Include user accounts
-- [ ] Ensure that users can't modify content created by other users (can't see other's content?)
-- [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+- [x] Ensure that users can't modify content created by other users (can't see other's content?)
+- [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [ ] Include user input validations
 - [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
@@ -22,4 +22,11 @@ Confirm
 
 To Do
 
-[] user can delete an item and it won't show up on their user page.
+
+[] signup page: persists user into database
+[] view clothes by categories
+[] can view a single page for a piece of clothing
+
+add capsule feature
+
+[]
