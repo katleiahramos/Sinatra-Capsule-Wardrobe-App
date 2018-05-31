@@ -44,6 +44,26 @@ class ApplicationController < Sinatra::Base
     redirect "users/#{current_user.id}"
   end
 
+  get '/pieces/:id/edit' do
+    @piece = Piece.find(params[:id])
+    erb :'pieces/edit_piece'
+  end
+
+  patch '/pieces/:id/edit' do
+   piece = Piece.find(params[:id])
+
+   params.each do |key, value|
+      if !value.empty? && key != "_method"
+        piece.update(key => value)
+      end
+    end
+
+    redirect "/users/#{current_user.id}"
+  end
+
+
+
+
   helpers do
     def logged_in?
       !!session[:user_id]

@@ -3,9 +3,16 @@
 
 <% @user.pieces.each do |piece| %>
   <h2> <%= piece.description %>  </h2>
-  <h2> <%= piece.price %>  </h2>
-  <h2> <%= piece.size %>  </h2>
-  <h2> <%= piece.category.name %>  </h2>
+  <h3> <%= piece.price %>  </h2>
+  <h3> <%= piece.size %>  </h2>
+  <h3> <%= piece.category.name %>  </h2>
+
+
+  <a href="/pieces/<%= piece.id %>/edit">EDIT</a>
+  <!-- <form action="/pieces/<%= piece.id %>/edit" method="post">
+    <input type="submit" value="EDIT">
+  </form> -->
+    <br><br>
 <% end %>
 
 <!-- Show:
