@@ -1,0 +1,23 @@
+ <!-- show all pieces -->
+
+ <% @user.pieces.each do |piece| %>
+   <h2>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a>  </h2>
+   <h3> <%= piece.price %>  </h2>
+   <h3> <%= piece.size %>  </h2>
+   <h3> <%= piece.category.name %>  </h2>
+
+   <form class="" action="/pieces/<%= piece.id %>/delete" method="post">
+   <input id="hidden" type="hidden" name="_method" value="delete">
+     <input type="submit" value="DELETE">
+   </form>
+
+ <br>
+   <form action="/pieces/<%= piece.id %>/edit" method="get">
+     <input type="submit" value="EDIT">
+   </form>
+     <br><br>
+ <% end %>
+
+
+
+ <a href="/pieces/new">Create A Piece!</a>

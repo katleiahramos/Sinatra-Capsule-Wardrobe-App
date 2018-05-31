@@ -1,6 +1,8 @@
 <%= @category.name  %>
 
 <% @category.pieces.each do |piece| %>
+  <!-- show only the pieces in the category that belong to that user  -->
+  <% if piece.user_id == current_user.id %>
   <a href="/pieces/<%= piece.id %> "><%= piece.description %></a>
-
+  <% end  %>
 <% end %>
