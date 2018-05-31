@@ -1,1 +1,17 @@
 <%= @piece.description %>
+
+<%= @piece.price %>
+<%= @piece.size %>
+<%= @piece.category.name %>
+
+
+  <form class="" action="/pieces/<%= @piece.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE">
+  </form>
+
+<br>
+  <form action="/pieces/<%= @piece.id %>/edit" method="get">
+    <input type="submit" value="EDIT">
+  </form>
+    <br><br>

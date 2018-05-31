@@ -10,7 +10,7 @@
 <!-- pieces -->
 
 <% @user.pieces.each do |piece| %>
-  <h2> <%= piece.description %>  </h2>
+  <h2>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a>  </h2>
   <h3> <%= piece.price %>  </h2>
   <h3> <%= piece.size %>  </h2>
   <h3> <%= piece.category.name %>  </h2>
