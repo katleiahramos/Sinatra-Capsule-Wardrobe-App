@@ -24,9 +24,18 @@ To Do
 
 
 [x] signup page: persists user into database
-[] view clothes by categories
-[] can view a single page for a piece of clothing
+[x] view clothes by categories
+[x] can view a single page for a piece of clothing
 
 add capsule feature
+User can...
+[] view capsule on their homepage
+[] add clothes to their capsule from the view all, and piece show page
+[] can remove clothes from their capsule
+[] can view capsule by category
 
-[]
+
+Future features...
+[] create more than one capsule
+[] pieces can belong to many capsules
+[] can view other user's capsules

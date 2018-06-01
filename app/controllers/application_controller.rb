@@ -9,6 +9,9 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
+
+
+
   get "/" do
     erb :welcome
   end
@@ -109,6 +112,60 @@ class ApplicationController < Sinatra::Base
   get '/pieces/:id' do
     @piece = Piece.find(params[:id])
     erb :'pieces/show_piece'
+  end
+
+
+  #capsule CRUD
+  #UPDATE
+  get '/capsule/:id/edit' do
+    @capsule = Capsule.find(params[:id])
+    erb :'capsule/edit_capsule'
+  end
+
+  patch '/capsule/:capsule_id/pieces/:piece_id' do
+    capsule = Capsule.find(params[:capsule_id])
+    capsule.pieces.delete(Piece.find(params[:piece_id]))
+    capsule.save
+    redirect "capsule/#{capsule.id}"
+  end
+
+  get '/capsule/:id/edit_info' do
+    @capsule = Capsule.find(params[:id])
+    erb :'capsule/edit_capsule_info'
+  end
+
+  patch '/capsule/:id/edit_info' do
+    capsule = Capsule.find(params[:id])
+    capsule.update(name: params[:name])
+    capsule.save
+    redirect :"capsule/#{capsule.id}"
+  end
+
+  #READ
+  get '/capsule/:id' do
+    @capsule = Capsule.find(params[:id])
+
+    erb :'capsule/show_capsule'
+  end
+
+  #CREATE
+  get '/capsule/new' do
+    @user = current_user
+    erb :'capsule/create_capsule'
+  end
+
+  post '/capsule' do
+    Capsule.create(params)
+    redirect "users/#{current_user.id}"
+  end
+
+
+
+
+  #DESTROY
+  delete '/capsule/:id/delete' do
+    Capsule.destroy(params[:id])
+    redirect "users/#{current_user.id}"
   end
 
 

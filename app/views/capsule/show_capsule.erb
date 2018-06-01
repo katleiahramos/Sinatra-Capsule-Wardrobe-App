@@ -1,0 +1,13 @@
+<h1> <%= @capsule.name %> <a href="/capsule/<%= @capsule.id %>/edit">EDIT</a></h1>
+
+
+
+
+
+<!-- We want to see this user's capsule piece listed by category  -->
+<% Category.all.each do |category| %>
+ <h2><%= category.name %></h2>
+ <% @capsule.pieces.each do |piece| %>
+  <h3><%= piece.description if piece.category == category %></h3>
+ <% end %>
+<% end  %>

@@ -1,0 +1,7 @@
+<%= @capsule.name %>
+
+<form class="" action="/capsule/<%= @capsule.id %>/edit_info" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="name" placeholder="New Capsule Name">
+  <input type="submit" value="Update Info">
+</form>

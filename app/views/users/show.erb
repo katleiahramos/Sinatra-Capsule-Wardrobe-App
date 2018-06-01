@@ -2,6 +2,9 @@
 <br><br>
 
 
+<h2> Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a> </h2>
+
+
 <!-- categories -->
 <% @user.categories.each do |category| %>
 <a href="/categories/<%= category.id %>"><%= category.name %></a>
@@ -10,7 +13,7 @@
 <!-- pieces -->
 
 <a href="/pieces/all">All Pieces</a>
-<!--
+
 <% @user.pieces.each do |piece| %>
   <h2>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a>  </h2>
   <h3> <%= piece.price %>  </h2>
@@ -27,9 +30,9 @@
     <input type="submit" value="EDIT">
   </form>
     <br><br>
-<% end %> -->
-<!--
- <a href="/pieces/new">Create A Piece!</a> -->
+<% end %>
+
+ <a href="/pieces/new">Create A Piece!</a>
 
 
  <form class="" action="/logout" method="post">

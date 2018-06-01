@@ -1,16 +1,23 @@
-#users
-User.create(username: "kat", email: "kat@home.com", password: "password")
-User.create(username: "sky", email: "sky@home.com", password: "password")
-User.create(username: "tess", email: "tess@home.com", password: "password")
+  bags = Category.create(name: "Bags")
+  trousers = Category.create(name: "Trousers")
+  jeans = Category.create(name: "Jeans")
+  tshirts = Category.create(name: "T-shirts")
+  coats = Category.create(name: "Coats")
+  blazers = Category.create(name: "Blazers")
+  shoes = Category.create(name: "Shoes")
+  button_downs = Category.create(name: "Button-downs")
+  sweaters = Category.create(name: "Sweaters")
+  dresses = Category.create(name: "Dresses")
+  skirts = Category.create(name: "Skirts")
 
 
-#pieces
-Piece.create(size: "small", price: "50", description: "really cool piece!")
-Piece.create(size: "medium", price: '10', description: "really cool piece!")
-Piece.create(size: "large", price: '100', description: "really cool piece!")
 
+dress = Piece.create(description: "Grey H&M Dress", price: "15")
+dress.category = dresses
 
-#categories
-Category.create(name: "shoes")
-Category.create(name: "bags")
-Category.create(name: "jeans")
+bag = Piece.create(description: "Addidas Bag", price: "40")
+bag.category = bags
+
+kat = User.create(username: "kat", password: "awesome", email: "kat@home.com")
+kat.pieces << dress
+kat.pieces << bag
