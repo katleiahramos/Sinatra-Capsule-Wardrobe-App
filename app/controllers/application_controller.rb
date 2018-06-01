@@ -122,6 +122,12 @@ class ApplicationController < Sinatra::Base
     erb :'capsule/edit_capsule'
   end
 
+  patch '/capsule/:capsule_id/add/:piece_id' do
+    capsule = Capsule.find(params[:capsule_id])
+    capsule.pieces << Piece.find(params[:piece_id])
+    redirect "/users/#{current_user.id}"
+  end
+
   patch '/capsule/:capsule_id/pieces/:piece_id' do
     capsule = Capsule.find(params[:capsule_id])
     capsule.pieces.delete(Piece.find(params[:piece_id]))
