@@ -1,45 +1,63 @@
+<br>
 <h1>Welcome <%= @user.username %> !</h1>
 <br><br>
 
-
-<h2> Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a> </h2>
-
-
 <!-- categories -->
+
+<div class="row">
+
+
 <% @user.categories.each do |category| %>
 <a href="/categories/<%= category.id %>"><%= category.name %></a>
 <% end %>
+</div>
+
+<!-- Current Capsule -->
+
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-md">
+      Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a>
+
+      <% @user.capsule.pieces.each do |piece| %>
+
+      <%= piece.description  %>
+      <% end %>
+    </div>
+
+    <div class="col-md">
+      <% @user.pieces.each do |piece| %>
+        <div class="col">
+        <label>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a></label>
+
+          <br>
+
+
+            <form action="/capsule/<%= @user.capsule.id %>/add/<%= piece.id %>" method="post">
+              <input id="hidden" type="hidden" name="_method" value="PATCH">
+              <input type="submit" value="ADD">
+            </form>
+          </div>
+      <% end %>
+    </div>
+
+  </div> <!--row -->
+</div> <!-- container  -->
+
+
 
 <!-- pieces -->
 
-<a href="/pieces/all">All Pieces</a>
 
-<% @user.pieces.each do |piece| %>
-  <h2>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a>  </h2>
-  <h3> <%= piece.price %>  </h2>
-  <h3> <%= piece.size %>  </h2>
-  <h3> <%= piece.category.name %>  </h2>
 
-  <form class="" action="/pieces/<%= piece.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="DELETE">
+<div class="row">
+  <a href="/pieces/new">Create A Piece!</a>
+
+
+  <form class="" action="/logout" method="post">
+    <input type="submit" value="Logout">
   </form>
 
-<br>
-  <form action="/pieces/<%= piece.id %>/edit" method="get">
-    <input type="submit" value="EDIT">
-  </form>
-    <br><br>
-
-    <form action="/capsule/<%= @user.capsule.id %>/add/<%= piece.id %>" method="post">
-      <input id="hidden" type="hidden" name="_method" value="PATCH">
-      <input type="submit" value="ADD TO CAPSULE">
-    </form>
-<% end %>
-
- <a href="/pieces/new">Create A Piece!</a>
-
-
- <form class="" action="/logout" method="post">
-   <input type="submit" value="Logout">
- </form>
+</div>
