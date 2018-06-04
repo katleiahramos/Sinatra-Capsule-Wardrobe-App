@@ -6,10 +6,11 @@
   <input type="text" name="description" value="Description">
   <input type="text" name="price" value="Price">
   <br><br>
-  <% Category.all.each do |category| %>
-  <input type="radio" name="category_id" value="<%= category.id %>"><%= category.name %></input>
-  <% end %>
-
+  <li>
+    <% Category.all.each do |category| %>
+    <ul><input type="radio" name="category_id" value="<%= category.id %>"><%= category.name %></input></ul>
+    <% end %>
+  </li>
   <br><br>
   <input type="submit" value="Create Piece">
 </form>
