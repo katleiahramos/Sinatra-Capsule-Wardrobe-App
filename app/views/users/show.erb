@@ -2,15 +2,24 @@
 <h1>Welcome <%= @user.username %> !</h1>
 <br><br>
 
+<div class="row">
+  <a href="/pieces/new">Create A Piece!</a>
+
+
+  <form class="" action="/logout" method="post">
+    <input type="submit" value="Logout">
+  </form>
+
+</div>
 <!-- categories -->
 
 <div class="row">
 
 
-<% @user.categories.each do |category| %>
-<a href="/categories/<%= category.id %>"><%= category.name %></a>
-<% end %>
-</div>
+<!-- # <% @user.categories.each do |category| %>
+# <a href="/categories/<%= category.id %>"><%= category.name %></a>
+# <% end %>
+# </div> -->
 
 <!-- Current Capsule -->
 
@@ -51,15 +60,3 @@
 
 
 <!-- pieces -->
-
-
-
-<div class="row">
-  <a href="/pieces/new">Create A Piece!</a>
-
-
-  <form class="" action="/logout" method="post">
-    <input type="submit" value="Logout">
-  </form>
-
-</div>
