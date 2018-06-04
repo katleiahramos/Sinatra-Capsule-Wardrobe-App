@@ -208,12 +208,7 @@ class ApplicationController < Sinatra::Base
     redirect :"users/#{current_user.id}"
   end
 
-  #READ
-  get '/capsule/:id' do
-    @capsule = Capsule.find(params[:id])
 
-    erb :'capsule/show_capsule'
-  end
 
   #CREATE
   get '/capsule/new' do
