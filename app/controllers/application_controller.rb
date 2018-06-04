@@ -21,7 +21,6 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-
       flash[:message] = "You are already logged in."
       redirect :"users/#{current_user.id}"
     else
@@ -71,12 +70,14 @@ class ApplicationController < Sinatra::Base
   get '/users/:id' do
 
     if logged_in? && current_user.id == params[:id].to_i
-    @user = current_user
-    erb :'users/show'
+      @user = current_user
+      erb :'users/show'
     elsif logged_in?
+      # user restriction on user page
       flash[:message] = "Access Restricted."
       redirect :"users/#{current_user.id}"
     else
+
       flash[:message] = "Access restricted. Please log in."
       redirect :'/'
     end
@@ -86,6 +87,7 @@ class ApplicationController < Sinatra::Base
 
 
   get '/pieces/new' do
+    # piece can only be created by users that are logged in
     if logged_in?
       @user = current_user
       erb :'pieces/create_piece'
@@ -93,7 +95,6 @@ class ApplicationController < Sinatra::Base
       flash[:message] = "Access restricted. Please log in."
       redirect :'/'
     end
-
   end
 
   post '/pieces' do
@@ -102,6 +103,7 @@ class ApplicationController < Sinatra::Base
     redirect "users/#{current_user.id}"
   end
 
+  #edit an individual piece
   get '/pieces/:id/edit' do
     @piece = Piece.find(params[:id])
 
@@ -129,7 +131,7 @@ class ApplicationController < Sinatra::Base
     redirect "/users/#{current_user.id}"
   end
 
-
+  #delete an individual piece
   delete '/pieces/:id/delete' do
     Piece.destroy(params[:id])
     redirect "/users/#{current_user.id}"
