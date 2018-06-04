@@ -1,20 +1,22 @@
-Edit Piece: <%= @piece.description %>
-<%= @piece.price %>
-<%= @piece.size %>
-<%= @piece.category.name %>
+<a class="btn btn-primary" href="/users/<%= current_user.id %>" role="button">Back to Home</a>
 
+<br><br>
 
+<h2>Edit Piece: <%= @piece.description %></h1>
+<h3>Price: <%= @piece.price %></h3>
+<h3>Category: <%= @piece.category.name %></h3>
+
+<br><br>
 <form class="" action="/pieces/<%= @piece.id  %>/edit" method="post">
    <input id="hidden" type="hidden" name="_method" value="patch">
-   Description: <input type="text" name="description" >
-   Price: <input type="text" name="price" >
-   Size: <input type="text" name="size">
+  <label>  New Description: <input type="text" name="description" ></label>
+   <label>New Price: <input type="text" name="price" ></label>
 
-
+   <li>
    <% Category.all.each do |category| %>
-   <input type="radio" name="category_id" value="<%= category.id %>"><%= category.name %></input>
+   <ul><input type="radio" name="category_id" value="<%= category.id %>"><%= category.name %></input>
    <% end %>
-
+  </li>
    <br><br>
    <input type="submit" value="Update Piece">
 

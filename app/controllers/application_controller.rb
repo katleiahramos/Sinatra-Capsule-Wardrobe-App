@@ -71,6 +71,12 @@ class ApplicationController < Sinatra::Base
 
     if logged_in? && current_user.id == params[:id].to_i
       @user = current_user
+      if !@user.capsule
+        @user.capsule = Capsule.create(name: "New Capsule")
+        flash[:message] = "To begin, click 'Edit Capsule'."
+      elsif @user.pieces.empty?
+        flash[:message] = "Click 'Create New Piece' to add clothing to your collection."
+      end
       erb :'users/show'
     elsif logged_in?
       # user restriction on user page
