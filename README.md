@@ -17,3 +17,6 @@ Also [checkout my blog](http://alexisdorn.com/sinatras_adventure_bucket_list) on
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/katleiahramos/Sinatra-Capsule-Wardrobe-App
 
+## License 
+
+The project is available as open source under the terms of the [MIT LICENSE](https://opensource.org/licenses/MIT)
