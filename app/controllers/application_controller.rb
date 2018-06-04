@@ -148,7 +148,7 @@ class ApplicationController < Sinatra::Base
 
   # pieces views
 
-
+  #view individual piece
   get '/pieces/:id' do
     @piece = Piece.find(params[:id])
     if logged_in? && @piece.user.id == current_user.id
