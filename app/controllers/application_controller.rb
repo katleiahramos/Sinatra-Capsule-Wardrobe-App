@@ -138,25 +138,16 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/logout' do
-
     session.destroy
     flash[:message] = "You have successfully logged out."
     redirect '/'
   end
 
-# categories views
-  get '/categories/:id' do
 
-    @category = Category.find(params[:id])
-    erb :'categories/show_category'
-  end
 
 
   # pieces views
-  get '/pieces/all' do
-    @user = current_user
-    erb :'pieces/pieces'
-  end
+
 
   get '/pieces/:id' do
     @piece = Piece.find(params[:id])
