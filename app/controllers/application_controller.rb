@@ -166,11 +166,7 @@ class ApplicationController < Sinatra::Base
 
   #capsule CRUD
   #UPDATE
-  get '/capsule/:id/edit' do
 
-    @capsule = Capsule.find(params[:id])
-    erb :'capsule/edit_capsule'
-  end
 
 
   #add to capsule
