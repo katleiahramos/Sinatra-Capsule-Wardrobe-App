@@ -165,11 +165,9 @@ class ApplicationController < Sinatra::Base
 
 
   #capsule CRUD
-  #UPDATE
 
 
-
-  #add to capsule
+  #add piece to capsule
   patch '/capsule/:capsule_id/add/:piece_id' do
     capsule = Capsule.find(params[:capsule_id])
 
@@ -184,7 +182,7 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  #remove from capsule
+  #remove piece from capsule
   patch '/capsule/:capsule_id/pieces/:piece_id' do
     capsule = Capsule.find(params[:capsule_id])
     capsule.pieces.delete(Piece.find(params[:piece_id]))
@@ -193,12 +191,16 @@ class ApplicationController < Sinatra::Base
     redirect "users/#{current_user.id}"
   end
 
-  get '/capsule/:id/edit_info' do
+
+
+  # update capsule info
+
+  get '/capsule/:id/edit' do
     @capsule = Capsule.find(params[:id])
     erb :'capsule/edit_capsule_info'
   end
 
-  patch '/capsule/:id/edit_info' do
+  patch '/capsule/:id/edit' do
     capsule = Capsule.find(params[:id])
     capsule.update(name: params[:name])
     capsule.save

@@ -2,7 +2,7 @@
 
 <h1>  Current Capsule: <%= @capsule.name %></h1>
 
-<form class="" action="/capsule/<%= @capsule.id %>/edit_info" method="post">
+<form class="" action="/capsule/<%= @capsule.id %>/edit" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="text" name="name" placeholder="New Capsule Name">
   <input type="submit" value="Update Info">
