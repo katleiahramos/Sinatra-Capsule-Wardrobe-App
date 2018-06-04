@@ -1,9 +1,9 @@
 # Sinatra-Capsule-Wardrobe-App-
 Sinatra app that helps your build your capsule wardrobe 
 
-For more information on how to use the app, [see my video walkthrough](https://youtu.be/hoR2rwEu0mA)!
+For more information on how to use the app, [see my video walkthrough]()!
 
-Also [checkout my blog](http://alexisdorn.com/sinatras_adventure_bucket_list) on the process and completing this portfolio project!
+Also [checkout my blog]() on the process and completing this portfolio project!
 
 ## Installation
 
