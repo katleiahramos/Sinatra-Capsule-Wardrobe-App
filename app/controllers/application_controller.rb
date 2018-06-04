@@ -136,8 +136,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/logout' do
+
     session.destroy
-    redirect '/login'
+    flash[:message] = "You have successfully logged out."
+    redirect '/'
   end
 
 # categories views
@@ -172,21 +174,34 @@ class ApplicationController < Sinatra::Base
   #capsule CRUD
   #UPDATE
   get '/capsule/:id/edit' do
+
     @capsule = Capsule.find(params[:id])
     erb :'capsule/edit_capsule'
   end
 
+
+  #add to capsule
   patch '/capsule/:capsule_id/add/:piece_id' do
     capsule = Capsule.find(params[:capsule_id])
-    capsule.pieces << Piece.find(params[:piece_id])
-    redirect "/users/#{current_user.id}"
+
+    if capsule.pieces.include?(Piece.find(params[:piece_id]))
+      flash[:message] = "Piece is already in the capsule."
+      redirect "/users/#{current_user.id}"
+    else
+      capsule.pieces << Piece.find(params[:piece_id])
+      flash[:message] = "Piece successfully added to capsule."
+      redirect "/users/#{current_user.id}"
+    end
   end
 
+
+  #remove from capsule
   patch '/capsule/:capsule_id/pieces/:piece_id' do
     capsule = Capsule.find(params[:capsule_id])
     capsule.pieces.delete(Piece.find(params[:piece_id]))
     capsule.save
-    redirect "capsule/#{capsule.id}"
+    flash[:message] = "Piece successfully removed from capsule."
+    redirect "users/#{current_user.id}"
   end
 
   get '/capsule/:id/edit_info' do
@@ -198,6 +213,7 @@ class ApplicationController < Sinatra::Base
     capsule = Capsule.find(params[:id])
     capsule.update(name: params[:name])
     capsule.save
+    flash[:message] = "Capsule successfully updated."
     redirect :"users/#{current_user.id}"
   end
 

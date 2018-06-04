@@ -50,7 +50,7 @@
 
 
     <div class="col-md border ">
-      <h1>Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a></h1>
+      <h1>Your Capsule:  <%= @user.capsule.name %></h1>
       <li>
         <div class="row">
           <% @user.capsule.pieces.each do |piece| %>
