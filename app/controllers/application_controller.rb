@@ -1,6 +1,9 @@
 require './config/environment'
-
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
+
+
+  use Rack::Flash
 
   configure do
     set :public_folder, 'public'
@@ -22,10 +25,11 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     user = User.find_by(username: params[:username])
-    if user.authenticate(params[:password])
+    if user  && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "users/#{user.id}"
     else
+      flash[:message] = "Username/Password incorrect or not found. Please Try again."
       redirect '/login'
     end
 
@@ -37,8 +41,20 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    user = User.create(params)
-    redirect "/login"
+    # validate that username and email are not already in use.
+    if User.find_by(username: params[:username])
+      flash[:message] = "User already exists. Please try again or log in."
+      redirect '/signup'
+    elsif User.find_by(email: params[:email])
+      flash[:message] = "E-mail already in use. Please enter a new e-mail or log in."
+      redirect '/signup'
+    else
+      #create user if username and email are not already in use.
+      user = User.create(params)
+      flash[:message] = "User created successfully. Please log in."
+      redirect '/login'
+    end
+
   end
 
   get '/users/:id' do
