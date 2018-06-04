@@ -50,7 +50,7 @@
       <li>
         <div class="row">
           <% @user.capsule.pieces.each do |piece| %>
-            <div class="col">
+            <div class="col-sm">
               <ul><%= piece.description  %>
                 <form class="" action="/capsule/<%= @user.capsule.id %>/pieces/<%= piece.id %>" method="post">
                     <input id="hidden" type="hidden" name="_method" value="patch">
@@ -69,10 +69,8 @@
       <h1>Your Pieces</h1>
       <div class="row">
       <% @user.pieces.each do |piece| %>
-        <div class="col">
+        <div class="col-sm-4">
         <label>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a></label>
-
-          <br>
 
 
             <form action="/capsule/<%= @user.capsule.id %>/add/<%= piece.id %>" method="post">
@@ -80,10 +78,9 @@
               <input type="submit" value="ADD">
             </form>
           </div>
-
       <% end %>
       </div>
-  </div>
+    </div>
   </div> <!--row -->
 </div> <!-- container  -->
 
