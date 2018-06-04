@@ -1,4 +1,5 @@
-Create a piece!
+<a class="btn btn-primary" href="/users/<%= current_user.id %>" role="button">Back to Home</a>
+<h1>Create a piece!</h1>
 
 <form class="" action="/pieces" method="post">
   <input type="hidden" name="user_id" value="<%= @user.id %>">

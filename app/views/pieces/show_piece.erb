@@ -1,8 +1,9 @@
-<%= @piece.description %>
 
-<%= @piece.price %>
-<%= @piece.size %>
-<%= @piece.category.name %>
+<a class="btn btn-primary" href="/users/<%= current_user.id %>" role="button">Back to Home</a>
+<h1> <%= @piece.description %></h1>
+<br>
+<p> Price: $<%= @piece.price %></p>
+<p> Category: <%= @piece.category.name %> </p>
 
 
   <form class="" action="/pieces/<%= @piece.id %>/delete" method="post">

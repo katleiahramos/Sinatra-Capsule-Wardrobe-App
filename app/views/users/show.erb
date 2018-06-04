@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-sm text-center">
-        <a href="/capsule/<%= @user.capsule.id %>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit capsule</a>
+        <a href="/capsule/<%= @user.capsule.id %>/edit_info" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit capsule</a>
     </div>
 
     <div class="col-sm text-center">
@@ -69,7 +69,7 @@
 
 
     <div class="col-md border">
-      <h1>Your Pieces</h1>
+      <h1>Your Pieces:</h1>
       <div class="row">
       <% @user.pieces.each do |piece| %>
         <div class="col-sm-4">

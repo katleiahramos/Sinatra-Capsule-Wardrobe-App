@@ -20,7 +20,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/login' do
+    if logged_in?
+
+      flash[:message] = "You are already logged in."
+      redirect :"users/#{current_user.id}"
+    else
     erb :login
+    end
   end
 
   post '/login' do
@@ -37,7 +43,12 @@ class ApplicationController < Sinatra::Base
 
 
   get '/signup' do
-    erb :'users/create'
+    if logged_in?
+      flash[:message] = "You are already logged in."
+      redirect :"users/#{current_user.id}"
+    else
+      erb :'users/create'
+    end
   end
 
   post '/signup' do
@@ -58,20 +69,36 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/:id' do
+
+    if logged_in? && current_user.id == params[:id].to_i
     @user = current_user
     erb :'users/show'
+    elsif logged_in?
+      flash[:message] = "Access Restricted."
+      redirect :"users/#{current_user.id}"
+    else
+      flash[:message] = "Access restricted. Please log in."
+      redirect :'/'
+    end
   end
 
 
 
 
   get '/pieces/new' do
-    @user = current_user
-    erb :'pieces/create_piece'
+    if logged_in?
+      @user = current_user
+      erb :'pieces/create_piece'
+    else
+      flash[:message] = "Access restricted. Please log in."
+      redirect :'/'
+    end
+
   end
 
   post '/pieces' do
     piece = Piece.create(params)
+    flash[:message] = "Piece created successfully."
     redirect "users/#{current_user.id}"
   end
 
@@ -81,8 +108,10 @@ class ApplicationController < Sinatra::Base
     if logged_in? && @piece.user.id == current_user.id
       erb :'pieces/edit_piece'
     elsif logged_in?
+      flash[:message] = "Access restricted."
       redirect "/users/#{current_user.id}"
     else
+      flash[:message] = "Please Log-in."
       redirect '/'
     end
 
@@ -127,7 +156,16 @@ class ApplicationController < Sinatra::Base
 
   get '/pieces/:id' do
     @piece = Piece.find(params[:id])
-    erb :'pieces/show_piece'
+    if logged_in? && @piece.user.id == current_user.id
+      erb :'pieces/show_piece'
+    elsif logged_in?
+      flash[:message] = "Access restricted."
+      redirect "/users/#{current_user.id}"
+    else
+      flash[:message] = "Please Log-in."
+      redirect '/'
+    end
+
   end
 
 
@@ -160,7 +198,7 @@ class ApplicationController < Sinatra::Base
     capsule = Capsule.find(params[:id])
     capsule.update(name: params[:name])
     capsule.save
-    redirect :"capsule/#{capsule.id}"
+    redirect :"users/#{current_user.id}"
   end
 
   #READ
@@ -187,6 +225,7 @@ class ApplicationController < Sinatra::Base
   #DESTROY
   delete '/capsule/:id/delete' do
     Capsule.destroy(params[:id])
+    flash[:message] = "Capsule successfully deleted."
     redirect "users/#{current_user.id}"
   end
 

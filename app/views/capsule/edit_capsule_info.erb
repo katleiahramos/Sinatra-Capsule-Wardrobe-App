@@ -1,7 +1,16 @@
-<%= @capsule.name %>
+<a class="btn btn-primary" href="/users/<%= current_user.id %>" role="button">Back to Home</a>
+
+<h1>  Current Capsule: <%= @capsule.name %></h1>
 
 <form class="" action="/capsule/<%= @capsule.id %>/edit_info" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="text" name="name" placeholder="New Capsule Name">
   <input type="submit" value="Update Info">
+</form>
+
+<br>
+
+<form class="" action="/capsule/<%= @capsule.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Capsule">
 </form>

@@ -16,9 +16,14 @@
 </head>
 <body>
   <div class="wrapper">
-    <% if flash.has?(:message) %>
-      <%= flash[:message] %>
-    <% end %>
+
+      <% if flash.has?(:message) %>
+        <div class="alert alert-primary" role="alert">
+          <%= flash[:message] %>
+        </div>
+      <% end %>
+
+
 
       <%= yield %>
 
