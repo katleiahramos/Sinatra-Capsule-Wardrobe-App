@@ -2,18 +2,35 @@
 <h1>Welcome <%= @user.username %> !</h1>
 <br><br>
 
-<div class="row">
-  <a href="/pieces/new">Create A Piece!</a>
+<div class="container">
+  <div class="row">
+    <div class="col-sm text-center">
+      <a href="/pieces/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >Create New Piece</a>
+    </div>
+
+    <div class="col-sm text-center">
+        <a href="/capsule/<%= @user.capsule.id %>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit capsule</a>
+    </div>
+
+    <div class="col-sm text-center">
+      <form class="" action="/logout" method="post">
+        <input class="btn btn-primary btn-lg active" type="submit" value="Logout">
+      </form>
+    </div>
+  </div>
+</div> <!--container for nav -->
+
+<br><br>
+<!-- Buttons/links: edit capsule, create new piece, log out -->
 
 
-  <form class="" action="/logout" method="post">
-    <input type="submit" value="Logout">
-  </form>
 
-</div>
+
+
+
 <!-- categories -->
 
-<div class="row">
+
 
 
 <!-- # <% @user.categories.each do |category| %>
@@ -28,16 +45,16 @@
   <div class="row">
 
 
-    <div class="col-md ">
+    <div class="col-md border ">
       <h1>Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a></h1>
-
-      <% @user.capsule.pieces.each do |piece| %>
-
-      <%= piece.description  %>
-      <% end %>
+      <li>
+        <% @user.capsule.pieces.each do |piece| %>
+        <ul><%= piece.description  %></ul>
+        <% end %>
+      </li>
     </div>
 
-    <div class="col-md ">
+    <div class="col-md border">
       <h1>Your Pieces</h1>
       <% @user.pieces.each do |piece| %>
         <div class="col">
@@ -53,10 +70,9 @@
           </div>
       <% end %>
     </div>
-
   </div> <!--row -->
 </div> <!-- container  -->
 
-
+<br>
 
 <!-- pieces -->
