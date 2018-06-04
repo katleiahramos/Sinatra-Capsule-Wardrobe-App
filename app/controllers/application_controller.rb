@@ -210,16 +210,17 @@ class ApplicationController < Sinatra::Base
 
 
 
-  #CREATE
-  get '/capsule/new' do
-    @user = current_user
-    erb :'capsule/create_capsule'
-  end
+  #CREATE - This feature will not be avaiable to the user this version
 
-  post '/capsule' do
-    Capsule.create(params)
-    redirect "users/#{current_user.id}"
-  end
+  # get '/capsule/new' do
+  #   @user = current_user
+  #   erb :'capsule/create_capsule'
+  # end
+  #
+  # post '/capsule' do
+  #   Capsule.create(params)
+  #   redirect "users/#{current_user.id}"
+  # end
 
 
 
