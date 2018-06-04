@@ -15,11 +15,12 @@
 <!-- Current Capsule -->
 
 <div class="container">
+
   <div class="row">
 
 
-    <div class="col-md">
-      Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a>
+    <div class="col-md ">
+      <h1>Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a></h1>
 
       <% @user.capsule.pieces.each do |piece| %>
 
@@ -27,7 +28,8 @@
       <% end %>
     </div>
 
-    <div class="col-md">
+    <div class="col-md ">
+      <h1>Your Pieces</h1>
       <% @user.pieces.each do |piece| %>
         <div class="col">
         <label>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a></label>
