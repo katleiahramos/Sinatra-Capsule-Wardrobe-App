@@ -48,14 +48,26 @@
     <div class="col-md border ">
       <h1>Your Capsule:  <a href="/capsule/<%= @user.capsule.id %>"> <%= @user.capsule.name %></a></h1>
       <li>
-        <% @user.capsule.pieces.each do |piece| %>
-        <ul><%= piece.description  %></ul>
-        <% end %>
+        <div class="row">
+          <% @user.capsule.pieces.each do |piece| %>
+            <div class="col">
+              <ul><%= piece.description  %>
+                <form class="" action="/capsule/<%= @user.capsule.id %>/pieces/<%= piece.id %>" method="post">
+                    <input id="hidden" type="hidden" name="_method" value="patch">
+                    <input type="submit" value="Remove from Capsule">
+                  </form></ul>
+            </div>
+          <% end %>
+        </div>
       </li>
+
     </div>
+
+
 
     <div class="col-md border">
       <h1>Your Pieces</h1>
+      <div class="row">
       <% @user.pieces.each do |piece| %>
         <div class="col">
         <label>  <a href="/pieces/<%= piece.id %>"><%= piece.description %></a></label>
@@ -68,8 +80,10 @@
               <input type="submit" value="ADD">
             </form>
           </div>
+
       <% end %>
-    </div>
+      </div>
+  </div>
   </div> <!--row -->
 </div> <!-- container  -->
 
